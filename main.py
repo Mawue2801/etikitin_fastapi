@@ -33,7 +33,7 @@ def get_data_count(collection_name:str):
     
     return {"totalDocs": totalDocs, "oneScanDocs": oneScanDocs, "twoScanDocs": twoScanDocs}
 
-@app.post("/update_in/{collection_name}/{_qrcode}")
+@app.get("/update_in/{collection_name}/{_qrcode}")
 def update_record_in(collection_name: str, _qrcode: str):
     collection = db[collection_name]
     tmp = datetime.datetime.utcnow().isoformat(timespec='seconds')
@@ -42,7 +42,7 @@ def update_record_in(collection_name: str, _qrcode: str):
 
     return {"message": "Done"}
 
-@app.post("/update_out/{collection_name}/{_qrcode}")
+@app.get("/update_out/{collection_name}/{_qrcode}")
 def update_record_out(collection_name: str, _qrcode: str):
     collection = db[collection_name]
     tmp = datetime.datetime.utcnow().isoformat(timespec='seconds')
